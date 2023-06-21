@@ -1,0 +1,96 @@
+<<<<<<< HEAD
+class HelloWorld {
+    
+public static void main(String[] args) {
+        
+System.out.println("Sortiranje niza - Selection  sort!\n");
+        
+int[] niz={3,7,2,0,-10,4,8,1,2,9,5,6,26,33,4,3,1};
+        
+int i, j, min, pom;
+        
+        
+System.out.println("\nNiz prije sortiranja");
+        
+for(i=0;i<niz.length;i++)
+       
+System.out.print(niz[i] + " ");
+       
+       
+for(i=0;i<niz.length-1;i++){
+            
+min=i;
+            
+for(j=i+1;j<niz.length;j++){
+                
+if(niz[j]<niz[min]){
+                     
+min=j;
+                }
+           }
+           
+pom=niz[min];
+           
+niz[min] = niz[i];
+           
+niz[i]=pom;
+       }
+       
+        
+System.out.println("\n\nNiz nakon sortiranja");
+          
+for(i=0;i<niz.length;i++)
+       
+System.out.print(niz[i] + " ");
+    }
+}
+
+=======
+class HelloWorld {
+    
+public static void main(String[] args) {
+        
+System.out.println("Sortiranje niza - Selection  sort!\n");
+        
+int[] niz={3,7,2,0,-10,4,8,1,2,9,5,6,26,33,4,3,1};
+        
+int i, j, min, pom;
+        
+        
+System.out.println("\nNiz prije sortiranja");
+        
+for(i=0;i<niz.length;i++)
+       
+System.out.print(niz[i] + " ");
+       
+       
+for(i=0;i<niz.length-1;i++){
+            
+min=i;
+            
+for(j=i+1;j<niz.length;j++){
+                
+if(niz[j]<niz[min]){
+                     
+min=j;
+                }
+           }
+           
+pom=niz[min];
+           
+niz[min] = niz[i];
+           
+niz[i]=pom;
+       }
+       
+        
+System.out.println("\n\nNiz nakon sortiranja");
+          
+for(i=0;i<niz.length;i++)
+       
+System.out.print(niz[i] + " ");
+    }
+}
+
+>>>>>>> refs/heads/master
+link: https://www.youtube.com/watch?v=g-PGLbMth_g

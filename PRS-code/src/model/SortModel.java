@@ -66,19 +66,14 @@ public class SortModel {
 		vrijemeZavrsetka = System.currentTimeMillis();
 //		ispis(niz);
 		
-		String dodatniPodaci = nabaviPodatkeOParalelizaciji(sorter);
-		
-		return sorter + " sa nizom " + niz.getClass().getSimpleName() +
-				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n" + 
-				 dodatniPodaci;
-	}
-
-	private String nabaviPodatkeOParalelizaciji(Sort sorter) {
 		String dodatniPodaci = "";
 		if(sorter instanceof ParallelSort) {
 			dodatniPodaci = ((ParallelSort) sorter).podaciOParalelizaciji();
 		}
-		return dodatniPodaci;
+		
+		return sorter + " sa nizom " + niz.getClass().getSimpleName() +
+				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n" + 
+				 dodatniPodaci + "\n";
 	}
 	
 	/**

@@ -22,10 +22,10 @@ public class Main {
 		SortModel sortModel = new SortModel();
 		BubbleSort bubbleSort = new BubbleSort();
 		
-		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.MERGE, true, 10, false));
-		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.BUBBLE, true, 10, true));
-		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.QUICK, true, 10, false));
-		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.INSERTION, true, 100, true));
+		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.MERGE, true, 10000, false));
+		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.BUBBLE, true, 10000, true));
+		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.QUICK, true, 10000, false));
+		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.INSERTION, true, 10000, true));
 		
 		System.out.println("\nBUBBLE SORT\nNiz prije sortiranja:"+prikaz(niz));
 		bubbleSort.sort(niz, 0, niz.length-1);

@@ -33,25 +33,6 @@ public class SortModel {
 		return poruka;
 	}
 	
-	private <T extends Comparable<T>> String testiraj(Sort sorter, T[] niz) {
-		
-		double vrijemePocetka;
-		double vrijemeZavrsetka;
-		
-		ispis(niz);
-		vrijemePocetka = System.currentTimeMillis();
-		sorter.sort(niz, 0, niz.length - 1);
-		vrijemeZavrsetka = System.currentTimeMillis();
-		ispis(niz);
-		
-		String dodatniPodaci = nabaviPodatkeOParalelizaciji(sorter);
-		
-		return sorter + " sa nizom " + niz.getClass().getSimpleName() +
-				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n" + 
-				 dodatniPodaci;
-	}
-
-	
 	private Sort odaberiSort(Algoritam algoritam, boolean paralelni) {
 		Sort sorter = null;
 		switch (algoritam) {
@@ -72,6 +53,32 @@ public class SortModel {
 			break;
 		}
 		return sorter;
+	}
+	
+	private <T extends Comparable<T>> String testiraj(Sort sorter, T[] niz) {
+		
+		double vrijemePocetka;
+		double vrijemeZavrsetka;
+		
+//		ispis(niz);
+		vrijemePocetka = System.currentTimeMillis();
+		sorter.sort(niz, 0, niz.length - 1);
+		vrijemeZavrsetka = System.currentTimeMillis();
+//		ispis(niz);
+		
+		String dodatniPodaci = nabaviPodatkeOParalelizaciji(sorter);
+		
+		return sorter + " sa nizom " + niz.getClass().getSimpleName() +
+				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n" + 
+				 dodatniPodaci;
+	}
+
+	private String nabaviPodatkeOParalelizaciji(Sort sorter) {
+		String dodatniPodaci = "";
+		if(sorter instanceof ParallelSort) {
+			dodatniPodaci = ((ParallelSort) sorter).podaciOParalelizaciji();
+		}
+		return dodatniPodaci;
 	}
 	
 	/**
@@ -107,11 +114,4 @@ public class SortModel {
 			System.out.print(niz[i] + " ");
 	}
 	
-	private String nabaviPodatkeOParalelizaciji(Sort sorter) {
-		String dodatniPodaci = "";
-		if(sorter instanceof ParallelSort) {
-			dodatniPodaci = ((ParallelSort) sorter).podaciOParalelizaciji();
-		}
-		return dodatniPodaci;
-	}
 }

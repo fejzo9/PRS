@@ -6,9 +6,7 @@ import java.util.concurrent.RecursiveAction;
 import algorithms.MergeSort;
 import algorithms.Sort;
 
-public class ParallelInsertionSort implements ParallelSort{
-
-	ForkJoinPool pool;
+public class ParallelInsertionSort extends ParallelSort{
 	
 	@Override
 	public <T extends Comparable<T>> void sort(T[] niz, int lijevi, int desni) {
@@ -16,12 +14,6 @@ public class ParallelInsertionSort implements ParallelSort{
         pool = new ForkJoinPool();
         pool.invoke(task);
     }
-	
-	@Override
-	public String podaciOParalelizaciji() {
-		return "Nivo paralelizma je: " + pool.getParallelism() +
-		"\nBroj ukradenih taskova je: " + pool.getStealCount();
-	}
     
     public static class SortTask <T extends Comparable<T>> extends RecursiveAction {
     	

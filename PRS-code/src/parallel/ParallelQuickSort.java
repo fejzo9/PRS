@@ -6,12 +6,12 @@ import java.util.concurrent.RecursiveAction;
 import algorithms.QuickSort;
 import algorithms.Sort;
 
-public class ParallelQuickSort implements Sort{
+public class ParallelQuickSort extends ParallelSort{
 
 	@Override
 	public <T extends Comparable<T>> void sort(T[] niz, int lijevi, int desni) {
 		SortTask<?> task = new SortTask<T>(niz, lijevi, desni);
-		ForkJoinPool pool = new ForkJoinPool();
+		pool = new ForkJoinPool();
 		pool.invoke(task);
 	}
 	

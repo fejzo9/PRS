@@ -1,6 +1,6 @@
 # Parallel Sorting Algorithms
 
-This project implements and compares sequential and parallel sorting algorithms in Java using Java Swing. It aims to analyze the performance of five sorting algorithms (Bubble Sort, Insertion Sort, Merge Sort, Quick Sort, and Selection Sort) on both integer and double arrays.
+This project implements and compares sequential and parallel sorting algorithms in Java using the Fork/Join framework, with a Java Swing GUI. It aims to analyze the performance of five sorting algorithms (Bubble Sort, Insertion Sort, Merge Sort, Quick Sort, and Selection Sort) on both integer and double arrays.
 
 ## Features
 

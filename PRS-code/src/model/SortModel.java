@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Random;
-import java.util.function.Function;
 
 import algorithms.BubbleSort;
 import algorithms.InsertionSort;
@@ -14,6 +13,7 @@ import parallel.ParallelInsertionSort;
 import parallel.ParallelMergeSort;
 import parallel.ParallelQuickSort;
 import parallel.ParallelSelectionSort;
+import parallel.ParallelSort;
 
 
 public class SortModel {
@@ -44,9 +44,13 @@ public class SortModel {
 		vrijemeZavrsetka = System.currentTimeMillis();
 		ispis(niz);
 		
+		String dodatniPodaci = nabaviPodatkeOParalelizaciji(sorter);
+		
 		return sorter + " sa nizom " + niz.getClass().getSimpleName() +
-				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n";
+				"\nVrijeme izvrsenja = " + (vrijemeZavrsetka - vrijemePocetka) + "ms\n" + 
+				 dodatniPodaci;
 	}
+
 	
 	private Sort odaberiSort(Algoritam algoritam, boolean paralelni) {
 		Sort sorter = null;
@@ -103,4 +107,11 @@ public class SortModel {
 			System.out.print(niz[i] + " ");
 	}
 	
+	private String nabaviPodatkeOParalelizaciji(Sort sorter) {
+		String dodatniPodaci = "";
+		if(sorter instanceof ParallelSort) {
+			dodatniPodaci = ((ParallelSort) sorter).podaciOParalelizaciji();
+		}
+		return dodatniPodaci;
+	}
 }

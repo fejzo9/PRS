@@ -25,6 +25,8 @@ public class Main {
 		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.MERGE, true, 10, false));
 		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.BUBBLE, true, 10, true));
 		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.QUICK, true, 10, false));
+		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.INSERTION, true, 100, true));
+		
 		System.out.println("\nBUBBLE SORT\nNiz prije sortiranja:"+prikaz(niz));
 		bubbleSort.sort(niz, 0, niz.length-1);
 		System.out.println("Niz nakon sortiranja:" + prikaz(niz));

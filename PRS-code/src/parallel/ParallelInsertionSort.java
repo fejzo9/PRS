@@ -6,14 +6,22 @@ import java.util.concurrent.RecursiveAction;
 import algorithms.MergeSort;
 import algorithms.Sort;
 
-public class ParallelInsertionSort implements Sort{
+public class ParallelInsertionSort implements ParallelSort{
 
+	ForkJoinPool pool;
+	
 	@Override
 	public <T extends Comparable<T>> void sort(T[] niz, int lijevi, int desni) {
         SortTask<?> task = new SortTask<T>(niz, lijevi, desni);
-        ForkJoinPool pool = new ForkJoinPool();
+        pool = new ForkJoinPool();
         pool.invoke(task);
     }
+	
+	@Override
+	public String podaciOParalelizaciji() {
+		return "Nivo paralelizma je: " + pool.getParallelism() +
+		"\nBroj ukradenih taskova je: " + pool.getStealCount();
+	}
     
     public static class SortTask <T extends Comparable<T>> extends RecursiveAction {
     	
@@ -68,4 +76,5 @@ public class ParallelInsertionSort implements Sort{
     public String toString() {
     	return getClass().getSimpleName();
     }
+
 }

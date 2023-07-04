@@ -83,20 +83,17 @@ public class RandomFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {	
 					int broj = Integer.parseInt(getVelNizaTxt());
-					//Ogranicio sam da broj za velicinu niza moze biti od 1 do 1000
-					if(broj>999) {
-						prekoracenje();
-					}
-					else if(broj>0 && broj<=999 && cjelobrojni.isSelected()) {
+					
+					if(broj>0 && cjelobrojni.isSelected()) {
 						
 						Integer[] niz = SortModel.randomCijeli(broj);
-						String text = SortModel.ispisString(niz);
+						String text = SortModel.ispisStringInteger(niz);
 						frame.textArea.setText(text);
 						frame.show();
 						}
-					else if(broj>0 && broj<=999 && decimalni.isSelected()) {
+					else if(broj>0 && decimalni.isSelected()) {
 						Double[] niz = SortModel.randomDoublesi(broj);
-						String text = SortModel.ispisString(niz);
+						String text = SortModel.ispisStringDecimal(niz);
 						frame.textArea.setText(text);
 						frame.show();
 					}

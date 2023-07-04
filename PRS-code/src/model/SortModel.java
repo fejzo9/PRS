@@ -84,7 +84,7 @@ public class SortModel {
 		Random random = new Random();
 	      Integer[] niz = new Integer[duzina];
 	      for (int i = 0; i < duzina; i++) {
-	         niz[i] = random.nextInt();
+	         niz[i] = random.nextInt(-10000,10000);
 	      }
 	      return niz;
 	}
@@ -97,7 +97,7 @@ public class SortModel {
 		Random random = new Random();
 	      Double[] niz = new Double[duzina];
 	      for (int i = 0; i < duzina; i++) {
-	         niz[i] = random.nextDouble(-1000000, 1000000);
+	         niz[i] = random.nextDouble(-10000, 10000);
 	      }
 	      return niz;
 	}
@@ -109,12 +109,25 @@ public class SortModel {
 			System.out.print(niz[i] + " ");
 	}
 	
-	public static <T extends Comparable<T>> String ispisString(T[] niz) {
+	public static <T extends Comparable<T>> String ispisStringInteger(T[] niz) {
 		int i;
 		String text = "Random niz prije sortiranja:\n\n";
 		System.out.print("\nNiz: ");
-		for(i=0;i<niz.length;i++)
+		for(i=0;i<niz.length;i++) 
 			text+=(niz[i] + "\n");
+		
+		return text;
+	}
+	
+	public static <T extends Comparable<T>> String ispisStringDecimal(T[] niz) {
+		int i;
+		String text = "Random niz prije sortiranja:\n\n";
+		System.out.print("\nNiz: ");
+		for(i=0;i<niz.length;i++) {
+			text+= String.format("%.3f", niz[i]);
+			text+= "\n";
+//			text+=(niz[i] + "\n");
+		}
 		return text;
 	}
 	

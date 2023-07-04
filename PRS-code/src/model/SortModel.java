@@ -111,21 +111,21 @@ public class SortModel {
 	
 	public static <T extends Comparable<T>> String ispisStringInteger(T[] niz) {
 		int i;
-		String text = "Random niz prije sortiranja:\n\n";
+		String text = "Random niz prije sortiranja: \n\n";
 		System.out.print("\nNiz: ");
 		for(i=0;i<niz.length;i++) 
-			text+=(niz[i] + "\n");
+			text+=(niz[i] + " \n");
 		
 		return text;
 	}
 	
 	public static <T extends Comparable<T>> String ispisStringDecimal(T[] niz) {
 		int i;
-		String text = "Random niz prije sortiranja:\n\n";
+		String text = "Random niz prije sortiranja: \n\n";
 		System.out.print("\nNiz: ");
 		for(i=0;i<niz.length;i++) {
-			text+= String.format("%.3f", niz[i]);
-			text+= "\n";
+			text+= String.format("%.3f ", niz[i]);
+			text+= " \n";
 //			text+=(niz[i] + "\n");
 		}
 		return text;

@@ -12,6 +12,7 @@ public class TextPanel extends JPanel {
 	public TextPanel() {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Consolas",Font.PLAIN,20));
+		
 		this.add(textArea);
 		
 	}

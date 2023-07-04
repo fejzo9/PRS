@@ -13,13 +13,14 @@ import parallel.ParallelQuickSort;
 public class Main {
 	public static void main(String[] args) {
 	
-		long startTime;
+		/*long startTime;
 		long endTime;
 		
-		Integer[] niz={3,7,0,2,44,-23,8,1,14,2,-8,9,5,6,4,3,1};
+		Integer[] niz={3,7,0,2,44,-23,8,1,14,2,-8,9,5,6,4,3,1};*/
+		
 		AppsFrame frame = new AppsFrame();
 		
-		SortModel sortModel = new SortModel();
+		/*SortModel sortModel = new SortModel();
 		BubbleSort bubbleSort = new BubbleSort();
 		
 		System.out.println(sortModel.demonstrirajSortiranje(Algoritam.MERGE, true, 10000, false));
@@ -29,8 +30,10 @@ public class Main {
 		
 		System.out.println("\nBUBBLE SORT\nNiz prije sortiranja:"+prikaz(niz));
 		bubbleSort.sort(niz, 0, niz.length-1);
-		System.out.println("Niz nakon sortiranja:" + prikaz(niz));
+		System.out.println("Niz nakon sortiranja:" + prikaz(niz));*/
+		
 	}
+	
 	public static void ispis(int[] niz) {
 		int i;
 		System.out.print("\nNiz: ");

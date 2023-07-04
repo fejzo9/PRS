@@ -12,6 +12,7 @@ public class UnosPanel extends JPanel {
 		JButton unosNiz = new JButton("Unesite niz");
 		JButton randomNiz = new JButton("Random niz");
 		
+		
 		unosNiz.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -25,7 +26,7 @@ public class UnosPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-//					frame.hide();
+					frame.hide();
 					new RandomFrame(frame);	
 				} catch (Exception e2) {
 					System.out.println(e2);
@@ -36,6 +37,7 @@ public class UnosPanel extends JPanel {
 		
 		this.add(unosNiz);
 		this.add(randomNiz);
+		
 	}
 
 }

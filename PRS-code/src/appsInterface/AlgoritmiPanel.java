@@ -63,7 +63,7 @@ public class AlgoritmiPanel extends JPanel {
 		
 		
 		this.setLayout(new BorderLayout());
-		this.add(algoritmiPanel, BorderLayout.WEST);
+		this.add(algoritmiPanel, BorderLayout.CENTER);
 		this.add(paralelniPanel, BorderLayout.EAST);
 		this.add(sortiraj, BorderLayout.SOUTH);
 		

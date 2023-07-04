@@ -109,4 +109,14 @@ public class SortModel {
 			System.out.print(niz[i] + " ");
 	}
 	
+	public static <T extends Comparable<T>> String ispisString(T[] niz) {
+		int i;
+		String text = "Random niz prije sortiranja:\n\n";
+		System.out.print("\nNiz: ");
+		for(i=0;i<niz.length;i++)
+			text+=(niz[i] + "\n");
+		return text;
+	}
+	
+	
 }

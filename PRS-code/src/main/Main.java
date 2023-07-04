@@ -45,8 +45,6 @@ public class Main {
 		 * System.out.println("Niz nakon sortiranja:" + prikaz(niz));
 		 */
 
-		testiranjeManuelno();
-
 	}
 
 	public static void ispis(int[] niz) {

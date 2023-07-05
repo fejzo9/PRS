@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 
 public class AppsFrame extends JFrame {
 
-	JTextArea textArea = new JTextArea(10,15);
+	JTextArea textArea = new JTextArea(30, 35);
 
 	public AppsFrame() {
 		
@@ -39,14 +39,14 @@ public class AppsFrame extends JFrame {
 		 JScrollPane scrollPane = new JScrollPane(textArea);
 	     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		this.setLocationRelativeTo(null);
 		
 		this.getContentPane().add(scrollPane, BorderLayout.NORTH);
 		this.getContentPane().add(new UnosPanel(this),BorderLayout.CENTER);
 		this.getContentPane().add(new AlgoritmiPanel(this), BorderLayout.SOUTH);
+		
 		this.pack();
 		this.setVisible(true);
-		
+		this.setLocationRelativeTo(null);
 //		this.setResizable(false);
 		this.setMinimumSize(new Dimension(this.getWidth(),this.getHeight()));
 

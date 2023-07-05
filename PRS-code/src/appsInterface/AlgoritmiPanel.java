@@ -5,7 +5,9 @@ import java.awt.Component;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,9 +20,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class AlgoritmiPanel extends JPanel {
+import algorithms.BubbleSort;
 
+public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
+	
+	List<Number> brojevi;
+	
 	public AlgoritmiPanel(AppsFrame frame) {
+		
 		// Kreiranje panela koji ce biti lijevo
 		JPanel algoritmiPanel = new JPanel();
 		algoritmiPanel.setBorder(BorderFactory.createTitledBorder("Algoritam"));
@@ -84,31 +91,47 @@ public class AlgoritmiPanel extends JPanel {
 				// Stvaramo Matcher objekat pomocu ulaznog stringa i pattern objekta
 				Matcher matcher = pattern.matcher(text);
 
-				//Pravimo listu za smjestanje brojeva
-				 List<Number> numbers = new ArrayList<>();
-				 
-				 //Prolazimo kroz Matcher i dohvacamo brojeve
-				 while (matcher.find()) {
-			            String match = matcher.group();
-			            try {
-			                // Pokušavamo parsirati broj kao decimalni (double)
-			                double decimalNumber = Double.parseDouble(match);
-			                numbers.add(decimalNumber);
-			            } catch (NumberFormatException e1) {
-			                // Ako parsiranje kao decimalni nije uspjelo, pokušavamo partisati kao cjelobrojni (int)
-			                try {
-			                    int integerNumber = Integer.parseInt(match);
-			                    numbers.add(integerNumber);
-			                } catch (NumberFormatException ex) {
-			                    // Broj nije valjan, nastavljamo
-			                	continue;
-			                }
-			            }
-			        }
-				 
+				// Pravimo listu za smjestanje brojeva
+				brojevi = new ArrayList<>();
+
+				// Prolazimo kroz Matcher i dohvacamo brojeve
+				while (matcher.find()) {
+					String match = matcher.group();
+					try {
+						int integerBroj = Integer.parseInt(match);
+						brojevi.add(integerBroj);
+					} catch (NumberFormatException e1) {
+						try {
+							double decimalniBroj = Double.parseDouble(match);
+				            brojevi.add(decimalniBroj);
+						} catch (NumberFormatException ex) {
+							// Broj nije valjan, nastavljamo
+							System.out.println("Pogresan format! Nije broj upitanju!");
+							continue;
+						}
+					}
+				}
+				
+//				try {
+//				numbers = toT(brojevi);}catch (Exception e1) {
+//					System.out.println("Ne moze se castovati!"+"\n\n"+e1);
+//				}
+
 				if (bubbleSort.isSelected() && sekvencijalno.isSelected()) {
+					
+					BubbleSort bubbleSort = new BubbleSort();
+					
+					T[] brojeviArray = toT(brojevi);
+					
+					frame.textArea.append("\n\nNiz nakon sortiranja: \n");
+					bubbleSort.sort((T[]) brojeviArray, 0, brojevi.size()-1);
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
 					System.out.println("Sekvencijalni BubbleSort");
 				} else if (bubbleSort.isSelected() && paralelno.isSelected()) {
+
 					System.out.println("Parelelni BubbleSort");
 				} else if (insertionSort.isSelected() && sekvencijalno.isSelected()) {
 					System.out.println("Sekvencijalni InsertionSort");
@@ -149,4 +172,39 @@ public class AlgoritmiPanel extends JPanel {
 		this.add(sortiraj, BorderLayout.SOUTH);
 
 	}
+
+	//Metoda za prebacivanje ArrayLista u Comparable niz T[] 
+//	public T[] toT(List<Number> brojevi) {
+//		 // Stvaranje novog generičkog niza pomoću refleksije
+//        T[] array = (T[]) Array.newInstance(Object.class, brojevi.size());
+//
+//        // Kopiranje elemenata liste u niz
+//        for (int i = 0; i < brojevi.size(); i++) {
+//            array[i] = (T) brojevi.get(i);
+//        }
+//        return array;
+//	}
+	
+	@SuppressWarnings("unchecked")
+	public <T extends Comparable<T>> T[] toT(List<Number> brojevi) {
+	    // Stvaranje novog generičkog niza pomoću refleksije
+	    T[] array = (T[]) new Comparable[brojevi.size()];
+
+	    // Kopiranje elemenata liste u niz
+	    for (int i = 0; i < brojevi.size(); i++) {
+	        array[i] = (T) brojevi.get(i);
+	    }
+
+	    return array;
+	}
+	
+	//Metoda za prebacivanje iz Comparable u ArrayListu
+	public ArrayList<T> toArrayList(T[] array) {
+        ArrayList<T> list = new ArrayList<>();
+        for (T element : array) {
+            list.add(element);
+        }
+        return list;
+    }
+	
 }

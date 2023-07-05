@@ -146,9 +146,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (bubbleSort.isSelected() && paralelno.isSelected()) {
 					
@@ -172,9 +172,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (insertionSort.isSelected() && sekvencijalno.isSelected()) {
 					// Instanca sekvencijalnog insertionSort-a
@@ -197,9 +197,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (insertionSort.isSelected() && paralelno.isSelected()) {
 					
@@ -223,9 +223,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (selectionSort.isSelected() && sekvencijalno.isSelected()) {
 					// Instanca sekvencijalnog insertionSort-a
@@ -248,9 +248,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (selectionSort.isSelected() && paralelno.isSelected()) {
 					// Instanca paralelnog selectionSort-a
@@ -272,9 +272,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						String broj = brojeviArray[i].toString() + "\n";
 						frame.textArea.append(broj);
 					}
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (mergeSort.isSelected() && sekvencijalno.isSelected()) {
 					// Instanca sekvencijalnog smergeSort-a
@@ -297,9 +297,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 				} else if (mergeSort.isSelected() && paralelno.isSelected()) {
 					// Instanca paralelnog mergeSort-a
 					ParallelMergeSort mergeSort = new ParallelMergeSort();
@@ -321,9 +321,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if (quickSort.isSelected() && sekvencijalno.isSelected()) {
 					
@@ -347,9 +347,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 				} else if (quickSort.isSelected() && paralelno.isSelected()) {
 					
 					// Instanca paralelnog mergeSort-a
@@ -372,9 +372,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						frame.textArea.append(broj);
 					}
 					
-					protekloVrijeme = pocetak-kraj;
+					protekloVrijeme = kraj-pocetak;
 					
-					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme/1000 + "mikroSec");
 					
 				} else if ((!bubbleSort.isSelected() && !insertionSort.isSelected() && !selectionSort.isSelected()
 						&& !mergeSort.isSelected() && !quickSort.isSelected())

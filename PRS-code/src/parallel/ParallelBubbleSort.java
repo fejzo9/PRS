@@ -20,7 +20,7 @@ public class ParallelBubbleSort extends ParallelSort{
     	//Efikasnost granice mozemo eksperimentalno dokazati
     	//a ako stavimo da je = 100 onda ce samo sekvencijalno sortirati nas mali niz
     	//zato sada stoji 4
-    	private static final int GRANICA = 4;
+    	private static final int GRANICA = 200;
 		private T[] niz;
 		private int lijevi;
 		private int desni;

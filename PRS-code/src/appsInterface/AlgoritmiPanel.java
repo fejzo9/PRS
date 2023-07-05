@@ -21,13 +21,22 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import algorithms.BubbleSort;
+import algorithms.InsertionSort;
+import algorithms.MergeSort;
+import algorithms.QuickSort;
+import algorithms.SelectionSort;
+import parallel.ParallelBubbleSort;
+import parallel.ParallelInsertionSort;
+import parallel.ParallelMergeSort;
+import parallel.ParallelQuickSort;
+import parallel.ParallelSelectionSort;
 
 public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
-	
+
 	List<Number> brojevi;
-	
+
 	public AlgoritmiPanel(AppsFrame frame) {
-		
+
 		// Kreiranje panela koji ce biti lijevo
 		JPanel algoritmiPanel = new JPanel();
 		algoritmiPanel.setBorder(BorderFactory.createTitledBorder("Algoritam"));
@@ -103,7 +112,7 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 					} catch (NumberFormatException e1) {
 						try {
 							double decimalniBroj = Double.parseDouble(match);
-				            brojevi.add(decimalniBroj);
+							brojevi.add(decimalniBroj);
 						} catch (NumberFormatException ex) {
 							// Broj nije valjan, nastavljamo
 							System.out.println("Pogresan format! Nije broj upitanju!");
@@ -112,43 +121,261 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 					}
 				}
 				
-//				try {
-//				numbers = toT(brojevi);}catch (Exception e1) {
-//					System.out.println("Ne moze se castovati!"+"\n\n"+e1);
-//				}
-
+				long pocetak, kraj, protekloVrijeme;
+				
+				// Provjeravamo koji su buttoni selektovani
 				if (bubbleSort.isSelected() && sekvencijalno.isSelected()) {
-					
+
+					// Instanca sekvencijalnog bubbleSort-a
 					BubbleSort bubbleSort = new BubbleSort();
-					
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
 					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
 					
-					frame.textArea.append("\n\nNiz nakon sortiranja: \n");
-					bubbleSort.sort((T[]) brojeviArray, 0, brojevi.size()-1);
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					bubbleSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
 					for (int i = 0; i < brojeviArray.length; i++) {
 						String broj = brojeviArray[i].toString() + "\n";
 						frame.textArea.append(broj);
 					}
-					System.out.println("Sekvencijalni BubbleSort");
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (bubbleSort.isSelected() && paralelno.isSelected()) {
-
-					System.out.println("Parelelni BubbleSort");
+					
+					// Instanca paralelnog bubbleSort-a
+					ParallelBubbleSort parallelBubbleSort = new ParallelBubbleSort();
+					
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+					
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+					
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					parallelBubbleSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (insertionSort.isSelected() && sekvencijalno.isSelected()) {
-					System.out.println("Sekvencijalni InsertionSort");
+					// Instanca sekvencijalnog insertionSort-a
+					InsertionSort insertionSort = new InsertionSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					insertionSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (insertionSort.isSelected() && paralelno.isSelected()) {
-					System.out.println("Paralelni InsertionSort");
+					
+					// Instanca paralelnog insertionSort-a
+					ParallelInsertionSort insertionSort = new ParallelInsertionSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					insertionSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (selectionSort.isSelected() && sekvencijalno.isSelected()) {
-					System.out.println("Sekvencijalni SelectionSort");
+					// Instanca sekvencijalnog insertionSort-a
+					SelectionSort selectionSort = new SelectionSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					selectionSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (selectionSort.isSelected() && paralelno.isSelected()) {
-					System.out.println("Paralelni SelectionSort");
+					// Instanca paralelnog selectionSort-a
+					ParallelSelectionSort selectionSort = new ParallelSelectionSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					selectionSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+						
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (mergeSort.isSelected() && sekvencijalno.isSelected()) {
-					System.out.println("Sekvencijalni MergeSort");
+					// Instanca sekvencijalnog smergeSort-a
+					MergeSort mergeSort = new MergeSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					mergeSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
 				} else if (mergeSort.isSelected() && paralelno.isSelected()) {
-					System.out.println("Paralelni MergeSort");
+					// Instanca paralelnog mergeSort-a
+					ParallelMergeSort mergeSort = new ParallelMergeSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					mergeSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if (quickSort.isSelected() && sekvencijalno.isSelected()) {
-					System.out.println("Sekvencijalni QuickSort");
+					
+					// Instanca sekvencijalnog quickSort-a
+					QuickSort quickSort = new QuickSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					quickSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
 				} else if (quickSort.isSelected() && paralelno.isSelected()) {
-					System.out.println("Paralelni QuickSort");
+					
+					// Instanca paralelnog mergeSort-a
+					ParallelQuickSort quickSort = new ParallelQuickSort();
+
+					// niz brojevi koji je tipa List<Numbers> castujemo u niz T[] tipa Comparable<>
+					T[] brojeviArray = toT(brojevi);
+
+					// upisujemo u textAreu
+					frame.textArea.append("\nNiz nakon sortiranja: \n");
+
+					pocetak = System.nanoTime();
+					// Sortiramo niz
+					quickSort.sort((T[]) brojeviArray, 0, brojevi.size() - 1);
+					kraj = System.nanoTime();
+					
+					// prolazimo kroz niz i ispisujemo ga na ekran
+					for (int i = 0; i < brojeviArray.length; i++) {
+						String broj = brojeviArray[i].toString() + "\n";
+						frame.textArea.append(broj);
+					}
+					
+					protekloVrijeme = pocetak-kraj;
+					
+					frame.textArea.append("\nPotrebno vrijeme da se izvrsi ovaj algoritam je: " + protekloVrijeme + "ns");
+					
 				} else if ((!bubbleSort.isSelected() && !insertionSort.isSelected() && !selectionSort.isSelected()
 						&& !mergeSort.isSelected() && !quickSort.isSelected())
 						&& (sekvencijalno.isSelected() || paralelno.isSelected())) {
@@ -173,7 +400,7 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 
 	}
 
-	//Metoda za prebacivanje ArrayLista u Comparable niz T[] 
+	// Metoda za prebacivanje ArrayLista u Comparable niz T[]
 //	public T[] toT(List<Number> brojevi) {
 //		 // Stvaranje novog generičkog niza pomoću refleksije
 //        T[] array = (T[]) Array.newInstance(Object.class, brojevi.size());
@@ -184,27 +411,27 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 //        }
 //        return array;
 //	}
-	
+
 	@SuppressWarnings("unchecked")
 	public <T extends Comparable<T>> T[] toT(List<Number> brojevi) {
-	    // Stvaranje novog generičkog niza pomoću refleksije
-	    T[] array = (T[]) new Comparable[brojevi.size()];
+		// Stvaranje novog generičkog niza pomoću refleksije
+		T[] array = (T[]) new Comparable[brojevi.size()];
 
-	    // Kopiranje elemenata liste u niz
-	    for (int i = 0; i < brojevi.size(); i++) {
-	        array[i] = (T) brojevi.get(i);
-	    }
+		// Kopiranje elemenata liste u niz
+		for (int i = 0; i < brojevi.size(); i++) {
+			array[i] = (T) brojevi.get(i);
+		}
 
-	    return array;
+		return array;
 	}
-	
-	//Metoda za prebacivanje iz Comparable u ArrayListu
+
+	// Metoda za prebacivanje iz Comparable u ArrayListu
 	public ArrayList<T> toArrayList(T[] array) {
-        ArrayList<T> list = new ArrayList<>();
-        for (T element : array) {
-            list.add(element);
-        }
-        return list;
-    }
-	
+		ArrayList<T> list = new ArrayList<>();
+		for (T element : array) {
+			list.add(element);
+		}
+		return list;
+	}
+
 }

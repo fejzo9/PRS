@@ -2,24 +2,48 @@ package appsInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UnosPanel extends JPanel {
 	public UnosPanel(AppsFrame frame) {
-		JButton unosNiz = new JButton("Unesite niz");
+		JButton odaberiFile = new JButton("Odaberite file");
 		JButton randomNiz = new JButton("Random niz");
 		
 		
-		unosNiz.addActionListener(new ActionListener() {
+		odaberiFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//						frame.hide();
-//						new UnosFrame(frame);	
 						
-			}
+						JFileChooser fileChooser = new JFileChooser();
+		                FileNameExtensionFilter filter = new FileNameExtensionFilter("Tekstualne datoteke", "txt");
+		                fileChooser.setFileFilter(filter);
+
+		                int returnVal = fileChooser.showOpenDialog(frame);
+		                if (returnVal == JFileChooser.APPROVE_OPTION) {
+		                    File file = fileChooser.getSelectedFile();
+		                    try {
+		                        Scanner scanner = new Scanner(file);
+		                        
+		                        while (scanner.hasNext()) {
+		                            String number = scanner.next();
+		                            frame.textArea.append(number + "\n");
+		                        }
+
+		                        scanner.close();
+
+		                 } catch (FileNotFoundException e2) {
+		                        e2.printStackTrace();
+		                    }
+		                }
+		                }	
 		});
 		
 		randomNiz.addActionListener(new ActionListener() {
@@ -35,7 +59,7 @@ public class UnosPanel extends JPanel {
 			}
 		});
 		
-		this.add(unosNiz);
+		this.add(odaberiFile);
 		this.add(randomNiz);
 		
 	}

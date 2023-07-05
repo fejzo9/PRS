@@ -22,17 +22,6 @@ public abstract class PomocniFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
-		velNizaLbl = new JLabel("Unesite velicinu niza: ");
-		velNizaLbl.setFont(new Font(Font.SANS_SERIF,Font.BOLD,18));
-		velNizaTxt = new JTextField(10);
-		potvrtiBtn = new JButton("Potvrdi");
-		velNizaTxt.setSize(100, 30);
-		
-		this.setLocationRelativeTo(null);
-		
-		this.add(velNizaLbl,BorderLayout.NORTH);
-		this.add(velNizaTxt, BorderLayout.CENTER);
-//		this.show();
 		this.pack();
 		this.setVisible(true);
 		

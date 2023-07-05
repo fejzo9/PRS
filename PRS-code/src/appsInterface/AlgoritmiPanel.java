@@ -121,6 +121,8 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 					}
 				}
 				
+				String str = frame.textArea.getText();
+				
 				long pocetak, kraj, protekloVrijeme;
 				
 				// Provjeravamo koji su buttoni selektovani
@@ -386,7 +388,11 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 						&& (!sekvencijalno.isSelected() && !paralelno.isSelected())) {
 					String poruka = "Zaboravljena selekcija!\n\nMolim vas da selektujete neki od buttona za izvrsavanje.";
 					JOptionPane.showMessageDialog(null, poruka, "Greska", JOptionPane.WARNING_MESSAGE);
-				} else {
+				} else if (str.isEmpty()) {
+					String poruka = "Nema nista na ekranu!\n\nMolim vas da generisete neki niz.";
+					JOptionPane.showMessageDialog(null, poruka, "Greska", JOptionPane.WARNING_MESSAGE);
+				} 
+				else {
 					String poruka = "Zaboravljena selekcija!\n\nMolim vas da selektujete neki od buttona za algoritam kao i neki od buttona za izvrsavanje.";
 					JOptionPane.showMessageDialog(null, poruka, "Greska", JOptionPane.WARNING_MESSAGE);
 				}

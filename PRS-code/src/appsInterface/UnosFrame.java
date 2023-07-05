@@ -6,14 +6,23 @@ import java.awt.event.ActionListener;
 //import java.util.regex.Matcher;
 //import java.util.regex.Pattern;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class UnosFrame extends PomocniFrame {
 //	private static String pattern = "\\d";
 	
 	public UnosFrame(AppsFrame frame) {
-		super();
 		
+		ImageIcon image = new ImageIcon("sort2.png");
+		this.setTitle("PRS - Unos niza");
+		this.setIconImage(image.getImage());
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new BorderLayout());
+		
+		this.pack();
+		this.setVisible(true);		
 		velNizaTxt.setText("");
 		this.add(potvrtiBtn,BorderLayout.SOUTH);
 		

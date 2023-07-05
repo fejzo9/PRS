@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
  *AppsFrame - Glavni Prozor aplikacije
  */
 
-public class AppsFrame extends JFrame implements ActionListener {
+public class AppsFrame extends JFrame {
 
 	JTextArea textArea = new JTextArea(10,15);
 
@@ -43,19 +43,13 @@ public class AppsFrame extends JFrame implements ActionListener {
 		
 		this.getContentPane().add(scrollPane, BorderLayout.NORTH);
 		this.getContentPane().add(new UnosPanel(this),BorderLayout.CENTER);
-		this.getContentPane().add(new AlgoritmiPanel(), BorderLayout.SOUTH);
+		this.getContentPane().add(new AlgoritmiPanel(this), BorderLayout.SOUTH);
 		this.pack();
 		this.setVisible(true);
 		
 //		this.setResizable(false);
 		this.setMinimumSize(new Dimension(this.getWidth(),this.getHeight()));
 
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

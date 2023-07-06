@@ -33,6 +33,15 @@ import parallel.ParallelSelectionSort;
 
 public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 
+	public JRadioButton bubbleSort;
+	public JRadioButton insertionSort;
+	public JRadioButton selectionSort;
+	public JRadioButton mergeSort;
+	public JRadioButton quickSort;
+	
+	public JRadioButton sekvencijalno;
+	public JRadioButton paralelno;
+	
 	List<Number> brojevi;
 
 	public AlgoritmiPanel(AppsFrame frame) {
@@ -40,14 +49,14 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		// Kreiranje panela koji ce biti lijevo
 		JPanel algoritmiPanel = new JPanel();
 		algoritmiPanel.setBorder(BorderFactory.createTitledBorder("Algoritam"));
-		algoritmiPanel.setLayout(new BoxLayout(algoritmiPanel, BoxLayout.Y_AXIS));
-
+		algoritmiPanel.setLayout(new BoxLayout(algoritmiPanel, BoxLayout.X_AXIS));
+		
 		// RadioButtoni za sortiranje
-		JRadioButton bubbleSort = new JRadioButton("Bubble Sort");
-		JRadioButton insertionSort = new JRadioButton("Insertion Sort");
-		JRadioButton selectionSort = new JRadioButton("Selection Sort");
-		JRadioButton mergeSort = new JRadioButton("Merge Sort");
-		JRadioButton quickSort = new JRadioButton("Quick Sort");
+		bubbleSort = new JRadioButton("Bubble Sort");
+		insertionSort = new JRadioButton("Insertion Sort");
+		selectionSort = new JRadioButton("Selection Sort");
+		mergeSort = new JRadioButton("Merge Sort");
+		quickSort = new JRadioButton("Quick Sort");
 
 		// Dodavanje radioButtona za sortiranje u grupu
 		ButtonGroup grupaSort = new ButtonGroup();
@@ -56,22 +65,38 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		grupaSort.add(selectionSort);
 		grupaSort.add(mergeSort);
 		grupaSort.add(quickSort);
-
+		
+		JPanel algoritmiPomocniPanel = new JPanel();
+		algoritmiPomocniPanel.setLayout(new BoxLayout(algoritmiPomocniPanel, BoxLayout.Y_AXIS));
+		
+		algoritmiPomocniPanel.add(bubbleSort);
+		algoritmiPomocniPanel.add(insertionSort);
+		algoritmiPomocniPanel.add(selectionSort);
+		algoritmiPomocniPanel.add(mergeSort);
+		algoritmiPomocniPanel.add(quickSort);
+		
+		//IZVINJAVAM SE AKO NE VALJA
+		algoritmiPanel.add(algoritmiPomocniPanel);
+		algoritmiPanel.add(new NizPanel(this, frame.textArea));
+		
 		// Dodavanje radioButtona u Panel
-		algoritmiPanel.add(bubbleSort);
-		algoritmiPanel.add(insertionSort);
-		algoritmiPanel.add(selectionSort);
-		algoritmiPanel.add(mergeSort);
-		algoritmiPanel.add(quickSort);
-
+//		algoritmiPanel.add(bubbleSort);
+//		algoritmiPanel.add(insertionSort);
+//		algoritmiPanel.add(selectionSort);
+//		algoritmiPanel.add(mergeSort);
+//		algoritmiPanel.add(quickSort);
+		// Panel za niz
+		
+		
+		
 		// Kreiranje Panela koji ce biti desno
 		JPanel paralelniPanel = new JPanel();
 		paralelniPanel.setBorder(BorderFactory.createTitledBorder("Izvrsavanje"));
 		paralelniPanel.setLayout(new BoxLayout(paralelniPanel, BoxLayout.Y_AXIS));
 
 		// RadioButtoni za paralelizaciju
-		JRadioButton sekvencijalno = new JRadioButton("Sekvencijalno");
-		JRadioButton paralelno = new JRadioButton("Paralelno");
+		sekvencijalno = new JRadioButton("Sekvencijalno");
+		paralelno = new JRadioButton("Paralelno");
 
 		// Dodavanje radioButtona za paralelizaciju u grupu
 		ButtonGroup grupaParalel = new ButtonGroup();
@@ -406,18 +431,6 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 
 	}
 
-	// Metoda za prebacivanje ArrayLista u Comparable niz T[]
-//	public T[] toT(List<Number> brojevi) {
-//		 // Stvaranje novog generičkog niza pomoću refleksije
-//        T[] array = (T[]) Array.newInstance(Object.class, brojevi.size());
-//
-//        // Kopiranje elemenata liste u niz
-//        for (int i = 0; i < brojevi.size(); i++) {
-//            array[i] = (T) brojevi.get(i);
-//        }
-//        return array;
-//	}
-
 	@SuppressWarnings("unchecked")
 	public <T extends Comparable<T>> T[] toT(List<Number> brojevi) {
 		// Stvaranje novog generičkog niza pomoću refleksije
@@ -439,5 +452,4 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		}
 		return list;
 	}
-
 }

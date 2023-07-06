@@ -40,8 +40,8 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		// Kreiranje panela koji ce biti lijevo
 		JPanel algoritmiPanel = new JPanel();
 		algoritmiPanel.setBorder(BorderFactory.createTitledBorder("Algoritam"));
-		algoritmiPanel.setLayout(new BoxLayout(algoritmiPanel, BoxLayout.Y_AXIS));
-
+		algoritmiPanel.setLayout(new BoxLayout(algoritmiPanel, BoxLayout.X_AXIS));
+		
 		// RadioButtoni za sortiranje
 		JRadioButton bubbleSort = new JRadioButton("Bubble Sort");
 		JRadioButton insertionSort = new JRadioButton("Insertion Sort");
@@ -56,14 +56,29 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		grupaSort.add(selectionSort);
 		grupaSort.add(mergeSort);
 		grupaSort.add(quickSort);
-
+		
+		JPanel algoritmiPomocniPanel = new JPanel();
+		algoritmiPomocniPanel.setLayout(new BoxLayout(algoritmiPomocniPanel, BoxLayout.Y_AXIS));
+		
+		algoritmiPomocniPanel.add(bubbleSort);
+		algoritmiPomocniPanel.add(insertionSort);
+		algoritmiPomocniPanel.add(selectionSort);
+		algoritmiPomocniPanel.add(mergeSort);
+		algoritmiPomocniPanel.add(quickSort);
+		
+		algoritmiPanel.add(algoritmiPomocniPanel);
+		algoritmiPanel.add(new NizPanel());
+		
 		// Dodavanje radioButtona u Panel
-		algoritmiPanel.add(bubbleSort);
-		algoritmiPanel.add(insertionSort);
-		algoritmiPanel.add(selectionSort);
-		algoritmiPanel.add(mergeSort);
-		algoritmiPanel.add(quickSort);
-
+//		algoritmiPanel.add(bubbleSort);
+//		algoritmiPanel.add(insertionSort);
+//		algoritmiPanel.add(selectionSort);
+//		algoritmiPanel.add(mergeSort);
+//		algoritmiPanel.add(quickSort);
+		// Panel za niz
+		
+		
+		
 		// Kreiranje Panela koji ce biti desno
 		JPanel paralelniPanel = new JPanel();
 		paralelniPanel.setBorder(BorderFactory.createTitledBorder("Izvrsavanje"));

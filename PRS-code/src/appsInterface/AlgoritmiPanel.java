@@ -33,6 +33,15 @@ import parallel.ParallelSelectionSort;
 
 public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 
+	public JRadioButton bubbleSort;
+	public JRadioButton insertionSort;
+	public JRadioButton selectionSort;
+	public JRadioButton mergeSort;
+	public JRadioButton quickSort;
+	
+	public JRadioButton sekvencijalno;
+	public JRadioButton paralelno;
+	
 	List<Number> brojevi;
 
 	public AlgoritmiPanel(AppsFrame frame) {
@@ -43,11 +52,11 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		algoritmiPanel.setLayout(new BoxLayout(algoritmiPanel, BoxLayout.X_AXIS));
 		
 		// RadioButtoni za sortiranje
-		JRadioButton bubbleSort = new JRadioButton("Bubble Sort");
-		JRadioButton insertionSort = new JRadioButton("Insertion Sort");
-		JRadioButton selectionSort = new JRadioButton("Selection Sort");
-		JRadioButton mergeSort = new JRadioButton("Merge Sort");
-		JRadioButton quickSort = new JRadioButton("Quick Sort");
+		bubbleSort = new JRadioButton("Bubble Sort");
+		insertionSort = new JRadioButton("Insertion Sort");
+		selectionSort = new JRadioButton("Selection Sort");
+		mergeSort = new JRadioButton("Merge Sort");
+		quickSort = new JRadioButton("Quick Sort");
 
 		// Dodavanje radioButtona za sortiranje u grupu
 		ButtonGroup grupaSort = new ButtonGroup();
@@ -66,8 +75,9 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		algoritmiPomocniPanel.add(mergeSort);
 		algoritmiPomocniPanel.add(quickSort);
 		
+		//IZVINJAVAM SE AKO NE VALJA
 		algoritmiPanel.add(algoritmiPomocniPanel);
-		algoritmiPanel.add(new NizPanel());
+		algoritmiPanel.add(new NizPanel(this, frame.textArea));
 		
 		// Dodavanje radioButtona u Panel
 //		algoritmiPanel.add(bubbleSort);
@@ -85,8 +95,8 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		paralelniPanel.setLayout(new BoxLayout(paralelniPanel, BoxLayout.Y_AXIS));
 
 		// RadioButtoni za paralelizaciju
-		JRadioButton sekvencijalno = new JRadioButton("Sekvencijalno");
-		JRadioButton paralelno = new JRadioButton("Paralelno");
+		sekvencijalno = new JRadioButton("Sekvencijalno");
+		paralelno = new JRadioButton("Paralelno");
 
 		// Dodavanje radioButtona za paralelizaciju u grupu
 		ButtonGroup grupaParalel = new ButtonGroup();

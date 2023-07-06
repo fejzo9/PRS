@@ -1,26 +1,21 @@
 package appsInterface;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import model.Algoritam;
 import model.SortModel;
 
 public class NizPanel extends JPanel {
@@ -29,10 +24,8 @@ public class NizPanel extends JPanel {
 	private JTextField velNizaTxt = null;
 	private JButton izvrsiBtn = null;
 	
-	public NizPanel() {
+	public NizPanel(AlgoritmiPanel algoritmi, JTextArea prikaz) {
 		setBorder(new TitledBorder("Vrijeme izvršenja niza:"));
-		
-		///
 		
 		//Izgled prozora, isti kao i osnovni prozor - AppsFrame
 		ImageIcon image = new ImageIcon("sort2.png");
@@ -75,12 +68,27 @@ public class NizPanel extends JPanel {
 		panelSouth.add(izvrsiBtn,BorderLayout.EAST);
 		this.add(panelSouth,BorderLayout.SOUTH); //dodajemo panel na frame
 		
-//		izvrsiBtn.addActionListener(e -> {
-//			SortModel sortModel = new SortModel();
-//			if(velNizaTxt.getText() > 0)
-//			
-//			sortModel.demonstrirajSortiranje(null, getIgnoreRepaint(), ABORT, getFocusTraversalKeysEnabled());
-//		});
+		izvrsiBtn.addActionListener(e -> {
+			SortModel sortModel = new SortModel();
+			Algoritam algoritam = null;
+			boolean paralelni = algoritmi.sekvencijalno.isSelected() ? false : true;
+			int duzina = Integer.parseInt(velNizaTxt.getText());
+			boolean cijeli = cjelobrojni.isSelected() ? true : false;
+			
+			if(algoritmi.selectionSort.isSelected()) {
+				algoritam = Algoritam.SELECTION;
+			} else if (algoritmi.bubbleSort.isSelected()) {
+				algoritam = Algoritam.BUBBLE;
+			} else if (algoritmi.insertionSort.isSelected()) {
+				algoritam = Algoritam.INSERTION;
+			} else if (algoritmi.mergeSort.isSelected()) {
+				algoritam = Algoritam.MERGE;
+			} else {
+				algoritam = Algoritam.QUICK;
+			}
+			
+			prikaz.append(sortModel.demonstrirajSortiranje(algoritam, paralelni, duzina, cijeli));
+		});
 		
 		///
 		this.setVisible(true);

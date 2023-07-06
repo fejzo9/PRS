@@ -16,7 +16,8 @@ public class UnosPanel extends JPanel {
 	public UnosPanel(AppsFrame frame) {
 		JButton odaberiFile = new JButton("Odaberite file");
 		JButton randomNiz = new JButton("Random niz");
-		
+		JButton upisUFile = new JButton("Upis u file");
+		JButton obrisiEkran = new JButton ("Obrisi ekran");
 		
 		odaberiFile.addActionListener(new ActionListener() {
 			@Override
@@ -59,8 +60,27 @@ public class UnosPanel extends JPanel {
 			}
 		});
 		
+		obrisiEkran.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					frame.textArea.setText("");
+			}
+		});
+		
+		upisUFile.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		this.add(odaberiFile);
 		this.add(randomNiz);
+		this.add(upisUFile);
+		this.add(obrisiEkran);
 		
 	}
 

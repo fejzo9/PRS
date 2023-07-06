@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -12,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -129,50 +132,59 @@ public class RandomFrame extends JFrame {
 			int brojac = 0; //brojac koji ce se povecavati svaki put kada se klikne na button
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				brojac++;
-				String fileName = "file" + brojac + ".txt";
+				
 				int broj = Integer.parseInt(getVelNizaTxt());
-				FileWriter writer = null;
 				
 				if(broj>0 && cjelobrojni.isSelected()) {
 					Integer[] niz = SortModel.randomCijeli(broj);
 					String text = SortModel.ispisStringInteger(niz);
-					try{
-						writer = new FileWriter(fileName);
-			            writer.write(text);
-			            System.out.println("Tekst je uspješno upisan u datoteku.");
-			            frame.show();
-			            ovajFrame.dispose();
-					} catch (IOException e1) {
-			            System.out.println("Došlo je do greške prilikom upisa u datoteku: " + e1.getMessage());
-			        }finally {
-			            if (writer != null) {
-			                try {
-			                    writer.close(); // Zatvaranje Writer-a
-			                } catch (IOException e1) {
-			                    System.out.println("Došlo je do greške prilikom zatvaranja Writer-a: " + e1.getMessage());
-			                }
-			            }
-				}} else if(broj>0 && decimalni.isSelected()) {
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setDialogTitle("Save File");
+					fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Text Files", "txt"));
+
+					int userSelection = fileChooser.showSaveDialog(frame);
+					if (userSelection == JFileChooser.APPROVE_OPTION) {
+					    File fileToSave = fileChooser.getSelectedFile();
+					    String filePath = fileToSave.getAbsolutePath();
+					    fileToSave = new File(filePath + ".txt");
+					    
+					    try (BufferedWriter writer1 = new BufferedWriter(new FileWriter(fileToSave))) {
+					        writer1.write(SortModel.ispisStringDecimal(niz));
+					        JOptionPane.showMessageDialog(frame, "Fajl je uspjesno sacuvan!");
+					    } catch (IOException ex) {
+					        JOptionPane.showMessageDialog(frame, "Greska prilikom cuvanja fajla: " + ex.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+					    }
+					}
+					
+					frame.show();
+					ovajFrame.dispose();
+				} 
+				else if(broj>0 && decimalni.isSelected()) {
 					Double[] niz = SortModel.randomDoublesi(broj);
 					String text = SortModel.ispisStringDecimal(niz);
-					try{
-						writer = new FileWriter(fileName);
-			            writer.write(text);
-			            System.out.println("Tekst je uspješno upisan u datoteku.");
-			            frame.show();
-			            ovajFrame.dispose();
-					} catch (IOException e1) {
-			            System.out.println("Došlo je do greške prilikom upisa u datoteku: " + e1.getMessage());
-			        }finally {
-			            if (writer != null) {
-			                try {
-			                    writer.close(); // Zatvaranje Writer-a
-			                } catch (IOException e1) {
-			                    System.out.println("Došlo je do greške prilikom zatvaranja Writer-a: " + e1.getMessage());
-			                }
-			            }}
-				}else if(broj>0 && !(cjelobrojni.isSelected() || decimalni.isSelected())) {
+						
+						JFileChooser fileChooser = new JFileChooser();
+						fileChooser.setDialogTitle("Save File");
+						fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+						fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Text Files", "txt"));
+
+						int userSelection = fileChooser.showSaveDialog(frame);
+						if (userSelection == JFileChooser.APPROVE_OPTION) {
+						    File fileToSave = fileChooser.getSelectedFile();
+						    String filePath = fileToSave.getAbsolutePath();
+						    fileToSave = new File(filePath + ".txt");
+						    
+						    try (BufferedWriter writer1 = new BufferedWriter(new FileWriter(fileToSave))) {
+						        writer1.write(SortModel.ispisStringDecimal(niz));
+						        JOptionPane.showMessageDialog(frame, "Fajl je uspjesno sacuvan!");
+						    } catch (IOException ex) {
+						        JOptionPane.showMessageDialog(frame, "Greska prilikom cuvanja fajla: " + ex.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+						    }
+						}
+						frame.show();
+						ovajFrame.dispose();}
+					else if(broj>0 && !(cjelobrojni.isSelected() || decimalni.isSelected())) {
 					selekcija();
 				}
 				else {

@@ -431,18 +431,6 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 
 	}
 
-	// Metoda za prebacivanje ArrayLista u Comparable niz T[]
-//	public T[] toT(List<Number> brojevi) {
-//		 // Stvaranje novog generičkog niza pomoću refleksije
-//        T[] array = (T[]) Array.newInstance(Object.class, brojevi.size());
-//
-//        // Kopiranje elemenata liste u niz
-//        for (int i = 0; i < brojevi.size(); i++) {
-//            array[i] = (T) brojevi.get(i);
-//        }
-//        return array;
-//	}
-
 	@SuppressWarnings("unchecked")
 	public <T extends Comparable<T>> T[] toT(List<Number> brojevi) {
 		// Stvaranje novog generičkog niza pomoću refleksije
@@ -464,5 +452,4 @@ public class AlgoritmiPanel<T extends Comparable<T>> extends JPanel {
 		}
 		return list;
 	}
-
 }

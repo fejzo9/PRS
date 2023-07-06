@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -23,7 +24,7 @@ public class NizPanel extends JPanel {
 	private JLabel velNizaLbl = null;
 	private JTextField velNizaTxt = null;
 	private JButton izvrsiBtn = null;
-	
+
 	public NizPanel(AlgoritmiPanel algoritmi, JTextArea prikaz) {
 		setBorder(new TitledBorder("Vrijeme izvršenja niza:"));
 		
@@ -75,6 +76,9 @@ public class NizPanel extends JPanel {
 			int duzina = Integer.parseInt(velNizaTxt.getText());
 			boolean cijeli = cjelobrojni.isSelected() ? true : false;
 			
+			if(duzina>0 && (cjelobrojni.isSelected()||decimalni.isSelected())&&
+					(algoritmi.selectionSort.isSelected()|| algoritmi.bubbleSort.isSelected() || algoritmi.selectionSort.isSelected()
+		|| algoritmi.mergeSort.isSelected() || algoritmi.quickSort.isSelected())) {
 			if(algoritmi.selectionSort.isSelected()) {
 				algoritam = Algoritam.SELECTION;
 			} else if (algoritmi.bubbleSort.isSelected()) {
@@ -85,10 +89,18 @@ public class NizPanel extends JPanel {
 				algoritam = Algoritam.MERGE;
 			} else {
 				algoritam = Algoritam.QUICK;
+			}}else {
+				String poruka = "Pogresan unos!\n\n Negdje se desila greska, molim Vas provjerite!\n"
+						+ "Molim vas unesite pozitivan cijeli broj i pobrinite se da selektujete odgovarajuci algoritam sortiranja, kao i paralelizaciju!";
+				JOptionPane.showMessageDialog(null, poruka, "Upozorenje", JOptionPane.WARNING_MESSAGE);
+				
 			}
-			
+			try {
 			prikaz.append(sortModel.demonstrirajSortiranje(algoritam, paralelni, duzina, cijeli));
-		});
+			}catch(NullPointerException e1) {
+				System.out.println(e1);
+			}
+			});
 		
 		///
 		this.setVisible(true);

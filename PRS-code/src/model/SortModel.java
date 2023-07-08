@@ -54,7 +54,13 @@ public class SortModel {
 		}
 		return sorter;
 	}
-	
+	/**
+	 * @param <T>
+	 * @param sorter
+	 * @param niz
+	 * @return Vraca poruku o vremenu izvrsenja algoritma i nekim
+	 * dodatnim podacima ako je u pitanju paralelno sortiranje.
+	 */
 	private <T extends Comparable<T>> String testiraj(Sort sorter, T[] niz) {
 		
 		double vrijemePocetka;

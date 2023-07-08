@@ -4,7 +4,6 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
 import algorithms.MergeSort;
-import algorithms.Sort;
 
 public class ParallelInsertionSort extends ParallelSort{
 	
@@ -17,9 +16,6 @@ public class ParallelInsertionSort extends ParallelSort{
     
     public static class SortTask <T extends Comparable<T>> extends RecursiveAction {
     	
-    	//Efikasnost granice mozemo eksperimentalno dokazati
-    	//a ako stavimo da je = 100 onda ce samo sekvencijalno sortirati nas mali niz
-    	//zato sada stoji 4
     	private static final int GRANICA = 300;
 		private T[] niz;
 		private int lijevi;

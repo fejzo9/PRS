@@ -4,7 +4,6 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
 import algorithms.QuickSort;
-import algorithms.Sort;
 
 public class ParallelQuickSort extends ParallelSort{
 
